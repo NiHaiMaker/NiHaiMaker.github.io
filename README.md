@@ -34,3 +34,7 @@ npm run lint
 - 普通项目仓库：构建时自动加入仓库名称作为路径前缀
 
 PurrClick 安装包继续托管在腾讯云 COS，网站下载按钮直接指向正式版本文件。
+
+## PurrClick 更新日志
+
+主页的 `#changelog` 区域维护 PurrClick 的完整正式版本记录。新增版本时按新到旧更新 `app/page.tsx` 中的 `releaseHistory`，并与程序内 `Localization.xml` 和项目 README 中的版本内容保持一致；PurrClick 程序内只展示最新版本，并通过按钮跳转到该区域查看完整历史。

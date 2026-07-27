@@ -13,6 +13,11 @@ test("exports the personal software portfolio", async () => {
   assert.match(html, /把想法做成/);
   assert.match(html, /PurrClick/);
   assert.match(html, /v1\.1\.3/);
+  assert.match(html, /id="changelog"/);
+  assert.match(html, /更新日志/);
+  assert.match(html, /v1\.1\.2/);
+  assert.match(html, /v1\.1\.1/);
+  assert.match(html, /SchemaVersion = 1/);
   assert.match(html, /Windows 10/);
   assert.match(html, /og\.png/);
   assert.match(

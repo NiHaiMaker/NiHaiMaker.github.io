@@ -37,6 +37,64 @@ const makerPrinciples = [
   },
 ];
 
+const releaseHistory = [
+  {
+    version: "v1.1.3",
+    date: "2026-07-27",
+    label: "正式维护版",
+    latest: true,
+    summary:
+      "新增安全的应用内自动更新流程，并补齐脚本目标绑定与最近脚本入口。",
+    highlights: [
+      "设置页新增“检查更新”；程序启动后每天静默检查一次，手动检查会明确提示当前是否已是最新版。",
+      "从固定 HTTPS COS 清单读取版本与中英文说明，并通过防缓存请求避免读取旧版 latest.json。",
+      "下载后严格校验文件大小、SHA-256 和程序版本号，全部通过后才替换启动器。",
+      "更新时备份旧程序并在替换或重启失败时回滚；新启动器等待旧进程退出后再启动新版主程序。",
+      "更新前保护未保存配置，多窗口同时更新使用互斥锁；更新只替换程序，不修改 .pccfg 或本机用户数据。",
+      "每份 .pccfg 可保存目标进程与窗口标题；读取配置时自动匹配目标，多个候选时由用户选择。",
+      "读取配置旁新增最近脚本列表，保留最近 8 份有效文件并显示脚本名与目标进程。",
+    ],
+  },
+  {
+    version: "v1.1.2",
+    date: "2026-07-25",
+    label: "正式维护版",
+    summary:
+      "优化预览画布、比例适配和界面对齐，并将使用说明与版本历史清晰分离。",
+    highlights: [
+      "优化完整预览画布与 9:16、16:9 显性比例框；截图保持原始宽高比适配，不裁剪、不旋转、不拉伸。",
+      "比例框边线根据截图明暗自动切换对比色，首次加载截图后正确显示已有步骤圆点。",
+      "选中左侧步骤或预览圆点时，对应圆点会持续变色并显示在其他圆点前方，直到切换步骤或点击预览空白处。",
+      "修复最小窗口宽度，并统一步骤配置控件、步骤列表和文本的对齐。",
+      "新增已循环次数实时计数，每完整执行一轮全部步骤后更新。",
+      "新增随 .pccfg 保存和读取的脚本说明，可记录当前配置的用途、前置条件和注意事项。",
+      "新增无需预先选择路径的“新建配置”按钮，保存时再指定 .pccfg 位置。",
+      "保存窗口按当前脚本实际名称预填文件名，新建配置不再固定使用 PurrClickConfig.pccfg。",
+      "标题栏显示当前脚本文件名并以 * 标记未保存状态；脚本说明入口移至运行栏最右侧。",
+      "新增独立非模态使用说明，打开说明时仍可操作主界面。",
+      "继续兼容 v1.1.1 正式版配置及 SchemaVersion 1。",
+    ],
+  },
+  {
+    version: "v1.1.1",
+    date: "2026-07-24",
+    label: "首个正式版",
+    summary:
+      "整合窗口选择、可视化步骤编辑、后台窗口消息、循环执行、配置存取与中英文界面。",
+    highlights: [
+      "新增内嵌 Localization.xml，作为主程序和轻量启动器共用的唯一翻译源。",
+      "语言下拉框根据 XML 自动生成；新增语言不再需要修改枚举或界面代码。",
+      "补齐主界面、设置、选窗、版本日志、运行日志、消息框、文件筛选器和错误信息的英文翻译。",
+      "从窗口列表选择目标窗体，并在下次启动时自动恢复仍然有效的目标窗口。",
+      "支持鼠标单击、按下、弹起和安全键盘按键；步骤可以添加、插入、删除、排序和拖拽。",
+      "支持 XY 坐标和百分比坐标，切换方式时保持实际位置不变；预览中可直接拖动鼠标步骤。",
+      "提供后台窗口消息和真实鼠标键盘两种输入方式，可按目标兼容性切换。",
+      "支持次数、无限和时间三种循环模式，以及可修改的最小循环间隔。",
+      "支持保存和读取 .pccfg 配置，并自动读取上一次有效配置；SchemaVersion = 1 作为后续兼容基线。",
+    ],
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -51,6 +109,7 @@ export default function Home() {
           </a>
           <div className="nav-links">
             <a href="#works">作品</a>
+            <a href="#changelog">更新日志</a>
             <a href="#about">理念</a>
             <a
               href="https://github.com/NiHaiMaker"
@@ -264,9 +323,62 @@ export default function Home() {
           </div>
         </section>
 
+        <section
+          className="changelog"
+          id="changelog"
+          aria-labelledby="changelog-title"
+        >
+          <div className="shell changelog-grid">
+            <div className="changelog-heading">
+              <p className="section-index">03 / CHANGELOG</p>
+              <h2 id="changelog-title">每一次更新，都有迹可循。</h2>
+              <p>
+                PurrClick 程序内只显示当前最新版。完整的正式版本记录集中保留在这里，
+                按发布日期从新到旧排列。
+              </p>
+            </div>
+
+            <div className="release-list">
+              {releaseHistory.map((release) => (
+                <details
+                  key={release.version}
+                  className={`release-card${release.latest ? " latest" : ""}`}
+                  open={release.latest}
+                >
+                  <summary>
+                    <span className="release-summary-main">
+                      <span className="release-title-row">
+                        <strong>{release.version}</strong>
+                        <span className="release-label">{release.label}</span>
+                        {release.latest ? (
+                          <span className="latest-badge">当前版本</span>
+                        ) : null}
+                      </span>
+                      <time dateTime={release.date}>{release.date}</time>
+                      <span className="release-summary-copy">
+                        {release.summary}
+                      </span>
+                    </span>
+                    <span className="release-toggle" aria-hidden="true">
+                      <i />
+                    </span>
+                  </summary>
+                  <div className="release-content">
+                    <ul>
+                      {release.highlights.map((highlight) => (
+                        <li key={highlight}>{highlight}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="shell about" id="about" aria-labelledby="about-title">
           <div className="about-heading">
-            <p className="section-index">03 / APPROACH</p>
+            <p className="section-index">04 / APPROACH</p>
             <h2 id="about-title">做好用的小软件，也是一件长期的事。</h2>
           </div>
           <div className="principle-grid">
