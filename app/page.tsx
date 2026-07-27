@@ -1,5 +1,5 @@
 const downloadUrl =
-  "https://purrclick-update-1252241379.cos.ap-guangzhou.myqcloud.com/releases/PurrClick-1.1.3.exe";
+  "https://purrclick-update-1252241379.cos.ap-guangzhou.myqcloud.com/releases/PurrClick-1.1.4.exe";
 
 const productFacts = [
   {
@@ -39,10 +39,25 @@ const makerPrinciples = [
 
 const releaseHistory = [
   {
-    version: "v1.1.3",
+    version: "v1.1.4",
     date: "2026-07-27",
     label: "正式维护版",
     latest: true,
+    summary:
+      "优化后台预览截图并将完整版本历史集中到官网，刷新预览时不再前置目标窗口。",
+    highlights: [
+      "手动刷新、恢复目标、选择目标和设置变更后的预览刷新统一使用后台安全路径，不再前置、恢复或激活目标窗口。",
+      "自动兼容模式优先使用 Windows Graphics Capture，再依次降级到 PrintWindow、WM_PRINTCLIENT 和屏幕客户区 GDI。",
+      "截图工作移至后台线程；捕获失败时可沿用最近一次有效预览，避免阻塞主界面操作。",
+      "程序内版本日志只显示当前最新版，窗口底部可直接打开官网查看完整版本历史。",
+      "官网新增按时间排列的可展开更新日志，集中展示 v1.1.4 及更早的正式版本。",
+      "继续兼容 v1.1.1 正式版配置及 SchemaVersion 1。",
+    ],
+  },
+  {
+    version: "v1.1.3",
+    date: "2026-07-27",
+    label: "正式维护版",
     summary:
       "新增安全的应用内自动更新流程，并补齐脚本目标绑定与最近脚本入口。",
     highlights: [
@@ -171,7 +186,7 @@ export default function Home() {
                 </div>
                 <div className="product-title-row">
                   <h3>PurrClick</h3>
-                  <span className="version">v1.1.3</span>
+                  <span className="version">v1.1.4</span>
                 </div>
                 <p className="product-kicker">可视化 Windows 自动化工具</p>
                 <p className="product-description">
@@ -191,7 +206,7 @@ export default function Home() {
                     下载最新版 <span aria-hidden="true">↓</span>
                   </a>
                 </div>
-                <p className="download-note">Windows 10 或更高版本 · 约 0.8 MB</p>
+                <p className="download-note">Windows 10 或更高版本 · 约 1.2 MB</p>
               </div>
 
               <div className="product-visual" aria-label="PurrClick 操作流程界面示意">
@@ -301,7 +316,7 @@ export default function Home() {
             <div className="release-strip">
               <div>
                 <span>最新正式版</span>
-                <strong>PurrClick v1.1.3</strong>
+                <strong>PurrClick v1.1.4</strong>
               </div>
               <div>
                 <span>发布日期</span>

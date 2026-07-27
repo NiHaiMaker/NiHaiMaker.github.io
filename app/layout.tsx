@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         url: `${siteUrl}/og.png`,
         width: 1731,
         height: 909,
-        alt: "NiHaiMaker 独立软件作品集，当前作品 PurrClick v1.1.3",
+        alt: "NiHaiMaker 独立软件作品集，当前作品 PurrClick v1.1.4",
       },
     ],
   },
