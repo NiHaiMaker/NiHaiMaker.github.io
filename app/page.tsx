@@ -1,5 +1,5 @@
 const downloadUrl =
-  "https://purrclick-update-1252241379.cos.ap-guangzhou.myqcloud.com/releases/PurrClick-2.0.0.exe";
+  "https://purrclick-update-1252241379.cos.ap-guangzhou.myqcloud.com/releases/PurrClick-1.1.4.exe";
 
 const productFacts = [
   {
@@ -39,24 +39,10 @@ const makerPrinciples = [
 
 const releaseHistory = [
   {
-    version: "v2.0.0",
-    date: "2026-11-07",
-    label: "正式功能版",
-    latest: true,
-    summary: "统一键盘动作配置，新增逐个输入兼容测试，由用户确认实际响应后固定发送方式。",
-    highlights: [
-      "键盘与鼠标共用单击、按下、弹起、次数和步骤延迟配置；任务结束、停止或失败时释放尚未弹起的键。",
-      "输入模式设置新增“测试兼容”“测试下一个”“确认有效”“重新测试”，每次只试发选中步骤的一次单击。",
-      "前台键盘按扫描码、虚拟键码顺序测试；后台按 SendMessage、PostMessage 顺序测试，不混用前后台路径。",
-      "发送接口返回成功不代表目标响应；只有人工确认并保存设置后才固定方式，失效时可从第一个候选重新测试。",
-      "兼容记录按目标进程、前台/后台、鼠标/键盘分别保存在本机，日常运行直接使用，不重复扫描；取消或全部失败不覆盖原记录。",
-      "继续兼容 v1.1.1 正式版配置及 SchemaVersion = 1，保持原有混淆、单文件交付和更新校验流程。不保证所有游戏或受保护程序响应模拟输入。",
-    ],
-  },
-  {
     version: "v1.1.4",
     date: "2026-07-27",
     label: "正式维护版",
+    latest: true,
     summary:
       "优化后台预览截图并将完整版本历史集中到官网，刷新预览时不再前置目标窗口。",
     highlights: [
@@ -200,7 +186,7 @@ export default function Home() {
                 </div>
                 <div className="product-title-row">
                   <h3>PurrClick</h3>
-                  <span className="version">v2.0.0</span>
+                  <span className="version">v1.1.4</span>
                 </div>
                 <p className="product-kicker">可视化 Windows 自动化工具</p>
                 <p className="product-description">
@@ -330,11 +316,11 @@ export default function Home() {
             <div className="release-strip">
               <div>
                 <span>最新正式版</span>
-                <strong>PurrClick v2.0.0</strong>
+                <strong>PurrClick v1.1.4</strong>
               </div>
               <div>
                 <span>发布日期</span>
-                <strong>2026-11-07</strong>
+                <strong>2026-07-27</strong>
               </div>
               <div>
                 <span>运行环境</span>

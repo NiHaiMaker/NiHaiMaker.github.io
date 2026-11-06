@@ -12,10 +12,6 @@ test("exports the personal software portfolio", async () => {
   assert.match(html, /独立软件作品集/);
   assert.match(html, /把想法做成/);
   assert.match(html, /PurrClick/);
-  assert.match(html, /v2\.0\.0/);
-  assert.match(html, /2026-11-07/);
-  assert.match(html, /测试下一个/);
-  assert.match(html, /确认有效/);
   assert.match(html, /v1\.1\.4/);
   assert.match(html, /v1\.1\.3/);
   assert.match(html, /id="changelog"/);
@@ -27,7 +23,7 @@ test("exports the personal software portfolio", async () => {
   assert.match(html, /og\.png/);
   assert.match(
     html,
-    /https:\/\/purrclick-update-1252241379\.cos\.ap-guangzhou\.myqcloud\.com\/releases\/PurrClick-2\.0\.0\.exe/,
+    /https:\/\/purrclick-update-1252241379\.cos\.ap-guangzhou\.myqcloud\.com\/releases\/PurrClick-1\.1\.4\.exe/,
   );
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|SkeletonPreview/);
 });
